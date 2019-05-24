@@ -15,13 +15,13 @@ env:
 
 jobs:
   include:
-    - stage: diff
+    - stage: NOT MASTER
       script:
-        - echo prout
+        - echo NOT MASTER
       if: branch != master and type = push
-    - stage: release
+    - stage: IS MASTER
       script:
-        - echo release
+        - echo IS MASTER
       if: branch = master AND type = push
 
 notifications:
