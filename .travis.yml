@@ -18,7 +18,6 @@ jobs:
     - stage: NOT MASTER
       script:
         - echo NOT MASTER
-      if: branch != master and type = push
     - stage: IS MASTER
       script:
         - echo IS MASTER
