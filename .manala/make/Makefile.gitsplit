@@ -19,7 +19,6 @@ define gitsplit
 		-e GITSPLIT_GITHUB_API_TOKEN \
 		--tty --interactive \
 		--volume $(MANALA_CURRENT_DIR):/srv \
-		--volume ~/.ssh:/root/.ssh \
 		jderusse/gitsplit
 endef
 endif
