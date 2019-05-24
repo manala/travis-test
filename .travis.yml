@@ -7,18 +7,16 @@ env:
   global:
     - VERBOSE=1
 
-jobs:
-  include:
-    - stage: Lint and Test
-      script:
-        - make lint.diff
-        - make test.diff
-      env:
-        matrix:
-          - DISTRIBUTIONS=debian.stretch ANSIBLE_VERSION=2.6.5
-      if: type = pull_request
+- stage: Lint and Test
+  script:
+    - make lint.diff
+    - make test.diff
+  env:
+    matrix:
+      - DISTRIBUTIONS=debian.stretch ANSIBLE_VERSION=2.6.5
+  if: type = pull_request
 
-    - stage: Gitplit
-      script:
-        - make split CONFIRM=1
-      if: branch = master AND type = push
+- stage: Gitplit
+  script:
+    - make split CONFIRM=1
+  if: branch = master AND type = push
