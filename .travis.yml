@@ -18,6 +18,8 @@ jobs:
     - stage: NOT MASTER
       script:
         - echo NOT MASTER
+      if: type = pull_request
+
     - stage: IS MASTER
       script:
         - echo IS MASTER
