@@ -88,7 +88,6 @@ RELEASE_HELP = \
 	$(call help,release,Release ansible roles)
 
 release:
-	$(call confirm,Please confirm release of *ALL* ansible roles)
 	$(call gitsplit)
 
 ########
