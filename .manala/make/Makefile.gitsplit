@@ -6,6 +6,7 @@ ifeq ($(shell uname -s),Darwin)
 define gitsplit
 	docker run \
 		--rm \
+		--e GITSPLIT_GITHUB_API_TOKEN \
 		--tty --interactive \
 		--volume $(MANALA_CURRENT_DIR):/srv \
 		--volume $(HOME)/.ssh:/root/.ssh \
@@ -15,6 +16,7 @@ else
 define gitsplit
 	docker run \
 		--rm \
+		--e GITSPLIT_GITHUB_API_TOKEN \
 		--tty --interactive \
 		--volume $(MANALA_CURRENT_DIR):/srv \
 		--volume $(SSH_AUTH_SOCK):/ssh-agent \
