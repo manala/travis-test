@@ -18,6 +18,7 @@ jobs:
     - stage: diff
       script:
         - echo prout
+      if: branch != master and type = push
     - stage: release
       script:
         - echo release
