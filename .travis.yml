@@ -20,5 +20,5 @@ jobs:
 
     - stage: Gitplit
       script:
-        - docker run --rm -e GITSPLIT_GITHUB_API_TOKEN -t --volume ${PWD}:/srv jderusse/gitsplit
+        - make split CONFIRM=1
       if: branch = master AND type = push
