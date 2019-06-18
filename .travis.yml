@@ -6,6 +6,9 @@ services:
 env:
   global:
     - VERBOSE=1
+  matrix:
+    - DISTRIBUTIONS=debian.jessie  ANSIBLE_VERSION=2.6.5
+    - DISTRIBUTIONS=debian.stretch ANSIBLE_VERSION=2.6.5
 
 Stages:
   - name: test
@@ -18,11 +21,9 @@ jobs:
     - stage: test
       script:
         - echo test
-      matrix:
-        - DISTRIBUTIONS=debian.jessie  ANSIBLE_VERSION=2.6.5
-        - DISTRIBUTIONS=debian.stretch ANSIBLE_VERSION=2.6.5
 
     - stage: gitsplit
       script:
         - echo gitsplit
+      env:
 
