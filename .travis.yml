@@ -29,13 +29,10 @@ env:
 
 script: echo LINT AND DIFF
 
-
-
+jobs:
 branches:
   only:
     - master
-
-jobs:
   include:
     - stage: test
       script:
