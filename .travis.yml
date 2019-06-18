@@ -3,6 +3,9 @@ language: generic
 services:
   - docker
 
+env:
+  - DISTRIBUTIONS=debian.stretch ANSIBLE_VERSION=2.6.5
+  - DISTRIBUTIONS=debian.jessie  ANSIBLE_VERSION=2.6.5
 
 jobs:
   include:
