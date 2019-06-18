@@ -15,11 +15,11 @@ jobs:
   include:
     - stage: test
       env: DISTRIBUTIONS=debian.stretch ANSIBLE_VERSION=2.6.5
-      script: << : [*prout]
+      script: <<: *prout
     - env: DISTRIBUTIONS=debian.jessie  ANSIBLE_VERSION=2.6.5
-      script: << : [*prout]
+      script: <<: *prout
     - env: DISTRIBUTIONS=debian.wheezy  ANSIBLE_VERSION=2.6.5
-      script: << : [*prout]
+      script: <<: *prout
     - stage: deploy
       script: echo deploy
 
