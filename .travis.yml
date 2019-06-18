@@ -12,13 +12,14 @@ env:
   - DISTRIBUTIONS=debian.stretch ANSIBLE_VERSION=2.6.5
   - DISTRIBUTIONS=ubuntu.xenial  ANSIBLE_VERSION=2.6.5
 
-- stage: test
-  script:
-    - echo test
+
+
+script:
+  - echo test
   # if: branch != master
-- stage: gitsplit
-  script:
-    - echo gitsplit
+# - stage: gitsplit
+#   script:
+#     - echo gitsplit
   #env:
       # if: branch = master AND commit_message = Release
 
