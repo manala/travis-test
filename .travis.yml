@@ -31,8 +31,7 @@ jobs:
   include:
     - name: test
       script: skip
-    - stage:
-      name: Make
+    - stage: Make
       script:
         - echo LINT
       # if: type = pull_request
