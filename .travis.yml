@@ -3,26 +3,36 @@ language: generic
 services:
   - docker
 
-env:
-  # global:
-  #   - VERBOSE=1
-# matrix:
-  - DISTRIBUTIONS=debian.jessie  ANSIBLE_VERSION=2.6.5
-  - DISTRIBUTIONS=debian.wheezy  ANSIBLE_VERSION=2.6.5
-  - DISTRIBUTIONS=debian.stretch ANSIBLE_VERSION=2.6.5
-  - DISTRIBUTIONS=ubuntu.xenial  ANSIBLE_VERSION=2.6.5
 
-- stage: test
-  script:
-    - echo test
-    # if: branch != master
-  # - stage: gitsplit
-- stage: gitsplit
-  script:
-    - echo gitsplit
-    #env:
-  if: branch = master
+jobs:
+  include:
+    - stage: test
+      script: echo test 1
+    - # stage name not required, will continue to use `test`
+      script: echo test 2
+    - stage: deploy
+      script: echo deploy
 
-# stages:
-#   - test
-#   - gitsplit
+# env:
+#   # global:
+#   #   - VERBOSE=1
+# # matrix:
+#   - DISTRIBUTIONS=debian.jessie  ANSIBLE_VERSION=2.6.5
+#   - DISTRIBUTIONS=debian.wheezy  ANSIBLE_VERSION=2.6.5
+#   - DISTRIBUTIONS=debian.stretch ANSIBLE_VERSION=2.6.5
+#   - DISTRIBUTIONS=ubuntu.xenial  ANSIBLE_VERSION=2.6.5
+
+# - stage: test
+#   script:
+#     - echo test
+#     # if: branch != master
+#   # - stage: gitsplit
+# - stage: gitsplit
+#   script:
+#     - echo gitsplit
+#     #env:
+#   if: branch = master
+
+# # stages:
+# #   - test
+# #   - gitsplit
