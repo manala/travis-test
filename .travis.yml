@@ -20,7 +20,7 @@ jobs:
     - stage: gitsplit
       script:
         - echo gitsplit
-      env:
+      #env:
       # if: branch = master AND commit_message = Release
 
 # stages:
