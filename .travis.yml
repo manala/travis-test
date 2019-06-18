@@ -30,13 +30,11 @@ env:
 jobs:
   include:
     - stage: test
-      env:
-    - stage: Make
       script:
         - echo LINT
-      # if: type = pull_request
+      if: type = pull_request
     - stage: Gitsplit
       script:
-        - make split CONFIRM=1
+        - echo GITSPLIT
       env:
-      # if: branch = master AND type != pull_request
+      if: branch = master AND commit_message = Release
