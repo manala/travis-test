@@ -29,7 +29,7 @@ env:
 
 jobs:
   include:
-    - stage: Make
+    - stage: LINT
       script:
         - echo LINT
       if: type = pull_request
