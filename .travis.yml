@@ -27,16 +27,15 @@ env:
     - DISTRIBUTIONS=centos.7       ANSIBLE_VERSION=2.6.5 PART=1/1
     - DISTRIBUTIONS=ubuntu.xenial  ANSIBLE_VERSION=2.6.5 PART=1/1
 
-- stage: Test1
-  script:
-    - make lint.diff
-    - make test.diff
-  if: type = pull_request
+script:
+  - make lint.diff
+  - make test.diff
+if: type = pull_request
 
-- stage: Gitsplit
-  script:
-    - make split CONFIRM=1
-  if: branch = master AND type != pull_request
+
+script:
+  - make split CONFIRM=1
+if: branch = master AND type != pull_request
 
 notifications:
   slack:
