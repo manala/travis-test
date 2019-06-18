@@ -8,6 +8,10 @@ env:
     - VERBOSE=1
   matrix:
     - DISTRIBUTIONS=debian.stretch ANSIBLE_VERSION=2.6.5
+
+script:
+  - echo default
+
 jobs:
   include:
     - stage: test
