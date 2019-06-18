@@ -14,7 +14,8 @@ env:
 
 jobs:
   include:
-    - script:
+    - stage: test
+      script:
         - echo test
       # if: branch != master
     - stage: gitsplit
