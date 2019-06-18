@@ -29,7 +29,7 @@ env:
 
 jobs:
   include:
-    - name: test
+    - stage: test
       script: skip
     - stage: Make
       script:
