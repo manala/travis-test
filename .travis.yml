@@ -36,7 +36,7 @@ matrix:
         - DISTRIBUTIONS=debian.stretch ANSIBLE_VERSION=2.6.5 PART=7/7
         - DISTRIBUTIONS=centos.7       ANSIBLE_VERSION=2.6.5 PART=1/1
         - DISTRIBUTIONS=ubuntu.xenial  ANSIBLE_VERSION=2.6.5 PART=1/1
-        if: branch != master
+      if: branch != master
     - stage: GITSPLIT
       script:
         - echo GITSPLIT
