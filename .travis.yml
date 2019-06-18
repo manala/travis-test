@@ -6,18 +6,23 @@ services:
 env:
   global:
     - VERBOSE=1
-  matrix:
-    - DISTRIBUTIONS=debian.jessie  ANSIBLE_VERSION=2.6.5
-    - DISTRIBUTIONS=debian.stretch ANSIBLE_VERSION=2.6.5
+
+Stages:
+  - name: test
+    if: type = pull_request
+  - name: gitsplit
+    if: branch = master AND type != pull_request
 
 jobs:
   include:
     - stage: test
       script:
         - echo test
-      if: type = pull_request
+      matrix:
+        - DISTRIBUTIONS=debian.jessie  ANSIBLE_VERSION=2.6.5
+        - DISTRIBUTIONS=debian.stretch ANSIBLE_VERSION=2.6.5
+
     - stage: gitsplit
-      env:
       script:
         - echo gitsplit
-      if: branch = master AND type != pull_request
+
