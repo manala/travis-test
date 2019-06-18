@@ -8,13 +8,13 @@ env:
     - VERBOSE=1
   matrix:
     - DISTRIBUTIONS=debian.stretch ANSIBLE_VERSION=2.6.5
+
+script:
+  - echo test
+if: type = pull_request
+
 jobs:
   include:
-    - stage: test
-      script:
-        - echo test
-      if: type = pull_request
-
     - stage: gitsplit
       script:
         - echo gitsplit
