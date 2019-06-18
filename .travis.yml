@@ -5,14 +5,14 @@ services:
 
 jobs:
   - stage: LINT
-  script:
-    - echo test
-  env:
-    - DISTRIBUTIONS=debian.jessie  ANSIBLE_VERSION=2.6.5
-    - DISTRIBUTIONS=debian.wheezy  ANSIBLE_VERSION=2.6.5
-    - DISTRIBUTIONS=debian.stretch ANSIBLE_VERSION=2.6.5
-    - DISTRIBUTIONS=ubuntu.xenial  ANSIBLE_VERSION=2.6.5
-  if: type = pull_request
+    script:
+      - echo test
+    env:
+      - DISTRIBUTIONS=debian.jessie  ANSIBLE_VERSION=2.6.5
+      - DISTRIBUTIONS=debian.wheezy  ANSIBLE_VERSION=2.6.5
+      - DISTRIBUTIONS=debian.stretch ANSIBLE_VERSION=2.6.5
+      - DISTRIBUTIONS=ubuntu.xenial  ANSIBLE_VERSION=2.6.5
+    if: type = pull_request
 
   - stage: gitsplit
     script:
