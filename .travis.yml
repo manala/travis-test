@@ -29,13 +29,13 @@ env:
 
 jobs:
   include:
-    - stage: LINT
+    - stage: Make
       script:
         - echo LINT
       if: type = pull_request
     - stage: Gitsplit
       script:
-        - echo GITSPLIT
+        - make split CONFIRM=1
       env:
       if: branch = master AND type != pull_request
 
