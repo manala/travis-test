@@ -30,7 +30,7 @@ env:
 jobs:
   include:
     - stage: test
-      env:
+      script: skip
     - stage: Make
       script:
         - echo LINT
