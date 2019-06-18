@@ -3,22 +3,20 @@ language: generic
 services:
   - docker
 
-env:
-  global:
-    - VERBOSE=1
-  matrix:
-    - DISTRIBUTIONS=debian.jessie  ANSIBLE_VERSION=2.6.5
-    - DISTRIBUTIONS=debian.stretch ANSIBLE_VERSION=2.6.5
 
 jobs:
-  include:
-    - stage: test
+  includes:
+    - stage: LINT
+      env:
+        - DISTRIBUTIONS=debian.jessie  ANSIBLE_VERSION=2.6.5
+        - DISTRIBUTIONS=debian.wheezy  ANSIBLE_VERSION=2.6.5
+        - DISTRIBUTIONS=debian.stretch ANSIBLE_VERSION=2.6.5
+        - DISTRIBUTIONS=ubuntu.xenial  ANSIBLE_VERSION=2.6.5
       script:
         - echo test
-      #if: type = pull_request
-
+      if: branch != master
     - stage: gitsplit
-      env:
       script:
         - echo gitsplit
-      #if: branch = master AND type != pull_request
+      env:
+      if: branch = master
