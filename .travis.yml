@@ -27,13 +27,16 @@ env:
     - DISTRIBUTIONS=centos.7       ANSIBLE_VERSION=2.6.5 PART=1/1
     - DISTRIBUTIONS=ubuntu.xenial  ANSIBLE_VERSION=2.6.5 PART=1/1
 
-script: echo LINT AND DIFF
-jobs:
-  include:
-    - stage: test
-      name: GITSPLIT
-      script:
-        - echo GITSPLIT
-      env:
-      if: branch = master
+before_script: [ ${TRAVIS_BRANCH} != "master" ] && export env=[matrix] || [ ${TRAVIS_BRANCH} == "master" ] && export env=null
+script:        [ ${TRAVIS_BRANCH} != "master" ] && echo LINT AND DIFF || [ ${TRAVIS_BRANCH} == "master" ] && echo GITSPLIT
+
+# script: echo LINT AND DIFF
+# jobs:
+#   include:
+#     - stage: test
+#       name: GITSPLIT
+#       script:
+#         - echo GITSPLIT
+#       env:
+#       if: branch = master
 
