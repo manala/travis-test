@@ -21,4 +21,4 @@ jobs:
       script:
         - echo gitsplit
       #if: branch = master AND type != pull_request
-      env: matrix = null
+      #env: matrix = null
