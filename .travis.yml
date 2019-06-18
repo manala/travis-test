@@ -36,7 +36,6 @@ env:
 - stage: Gitsplit
   script:
     - make split CONFIRM=1
-  env: matrix = null
   if: branch = master AND type != pull_request
 
 notifications:
