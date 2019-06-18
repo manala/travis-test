@@ -3,7 +3,8 @@ language: generic
 services:
   - docker
 
-- stage: LINT
+jobs:
+  - stage: LINT
   script:
     - echo test
   env:
@@ -13,11 +14,11 @@ services:
     - DISTRIBUTIONS=ubuntu.xenial  ANSIBLE_VERSION=2.6.5
   if: type = pull_request
 
-- stage: gitsplit
-  script:
-    - echo gitsplit
-    #env:
-  if: branch = master AND type != pull_request
+  - stage: gitsplit
+    script:
+      - echo gitsplit
+      #env:
+    if: branch = master AND type != pull_request
 
 
 # env:
