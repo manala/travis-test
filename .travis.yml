@@ -10,11 +10,15 @@ env:
     - DISTRIBUTIONS=debian.stretch ANSIBLE_VERSION=2.6.5
 
 script:
-  - echo test
-if: type = pull_request
+  - echo default
 
 jobs:
   include:
+    - stage: test
+      script:
+        - echo test
+      if: type = pull_request
+
     - stage: gitsplit
       script:
         - echo gitsplit
