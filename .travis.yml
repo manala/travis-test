@@ -14,8 +14,11 @@ jobs:
       script:
         - echo test 1
         - echo test 2
-    - stage: test
-      env: DISTRIBUTIONS=debian.jessie  ANSIBLE_VERSION=2.6.5
+    - env: DISTRIBUTIONS=debian.jessie  ANSIBLE_VERSION=2.6.5
+      script:
+        - echo test 1
+        - echo test 2
+    - env: DISTRIBUTIONS=debian.wheezy  ANSIBLE_VERSION=2.6.5
       script:
         - echo test 1
         - echo test 2
