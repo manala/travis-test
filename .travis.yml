@@ -34,8 +34,7 @@ matrix:
   include:
     - stage: test
       env:
-    - stage: LINT AND DIFF
-      script: echo LINT AND DIFF
+    - script: echo LINT AND DIFF
       if: branch != master
     - stage: GITSPLIT
       script:
