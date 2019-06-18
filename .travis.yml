@@ -37,7 +37,7 @@ jobs:
     - stage: Gitsplit
       script:
         - make split CONFIRM=1
-      env: ~
+      env: null
       if: branch = master AND type != pull_request
 
 notifications:
