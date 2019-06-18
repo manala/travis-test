@@ -28,9 +28,9 @@ env:
     - DISTRIBUTIONS=ubuntu.xenial  ANSIBLE_VERSION=2.6.5 PART=1/1
 
 jobs:
-  exclude:
-    - stage: test
   include:
+    - stage: test
+      skip: true
     - stage: Make
       script:
         - echo LINT
