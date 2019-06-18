@@ -10,12 +10,12 @@ env:
     - DISTRIBUTIONS=debian.jessie  ANSIBLE_VERSION=2.6.5
     - DISTRIBUTIONS=debian.stretch ANSIBLE_VERSION=2.6.5
 
-include:
   - stage: test
     script:
       - echo test
     if: type = pull_request
 
+include:
   - stage: gitsplit
     script:
       - echo gitsplit
