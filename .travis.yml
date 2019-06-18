@@ -7,19 +7,17 @@ env:
   global:
     - VERBOSE=1
   matrix:
+    - DISTRIBUTIONS=debian.jessie  ANSIBLE_VERSION=2.6.5
     - DISTRIBUTIONS=debian.stretch ANSIBLE_VERSION=2.6.5
 
-script:
-  - echo default
+include:
+  - stage: test
+    script:
+      - echo test
+    if: type = pull_request
 
-jobs:
-  include:
-    - stage: test2
-      script:
-        - echo test
-      if: type = pull_request
-
-    - stage: gitsplit
-      script:
-        - echo gitsplit
-      if: branch = master AND type != pull_request
+  - stage: gitsplit
+    script:
+      - echo gitsplit
+    if: branch = master AND type != pull_request
+    env: matrix = null
