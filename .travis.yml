@@ -14,13 +14,15 @@ env:
 
 jobs:
   include:
-    - stage: Test
-      script:
+    - script:
         - echo test
-      if: branch != master
+      # if: branch != master
     - stage: gitsplit
       script:
         - echo gitsplit
       env:
-      if: branch = master AND commit_message = Release
+      # if: branch = master AND commit_message = Release
 
+# stages:
+#   - test
+#   - gitsplit
