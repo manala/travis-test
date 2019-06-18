@@ -3,13 +3,13 @@ language: generic
 services:
   - docker
 
-env:
-  - DISTRIBUTIONS=debian.stretch ANSIBLE_VERSION=2.6.5
-  - DISTRIBUTIONS=debian.jessie  ANSIBLE_VERSION=2.6.5
 
 jobs:
   include:
     - stage: test
+      env:
+        - DISTRIBUTIONS=debian.stretch ANSIBLE_VERSION=2.6.5
+        - DISTRIBUTIONS=debian.jessie  ANSIBLE_VERSION=2.6.5
       script:
         - echo test 1
         - echo test 2
