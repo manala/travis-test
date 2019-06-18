@@ -29,8 +29,6 @@ env:
 
 jobs:
   include:
-    - stage: test
-      script: skip
     - stage: Make
       script:
         - echo LINT
