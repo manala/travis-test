@@ -3,22 +3,46 @@ language: generic
 services:
   - docker
 
+branches:
+  except:
+    - master
+
 env:
   global:
     - VERBOSE=1
   matrix:
-    - DISTRIBUTIONS=debian.jessie  ANSIBLE_VERSION=2.6.5
-    - DISTRIBUTIONS=debian.stretch ANSIBLE_VERSION=2.6.5
+    - DISTRIBUTIONS=debian.wheezy  ANSIBLE_VERSION=2.6.5 PART=1/3
+    - DISTRIBUTIONS=debian.wheezy  ANSIBLE_VERSION=2.6.5 PART=2/3
+    - DISTRIBUTIONS=debian.wheezy  ANSIBLE_VERSION=2.6.5 PART=3/3
+    - DISTRIBUTIONS=debian.jessie  ANSIBLE_VERSION=2.6.5 PART=1/7
+    - DISTRIBUTIONS=debian.jessie  ANSIBLE_VERSION=2.6.5 PART=2/7
+    - DISTRIBUTIONS=debian.jessie  ANSIBLE_VERSION=2.6.5 PART=3/7
+    - DISTRIBUTIONS=debian.jessie  ANSIBLE_VERSION=2.6.5 PART=4/7
+    - DISTRIBUTIONS=debian.jessie  ANSIBLE_VERSION=2.6.5 PART=5/7
+    - DISTRIBUTIONS=debian.jessie  ANSIBLE_VERSION=2.6.5 PART=6/7
+    - DISTRIBUTIONS=debian.jessie  ANSIBLE_VERSION=2.6.5 PART=7/7
+    - DISTRIBUTIONS=debian.stretch ANSIBLE_VERSION=2.6.5 PART=1/7
+    - DISTRIBUTIONS=debian.stretch ANSIBLE_VERSION=2.6.5 PART=2/7
+    - DISTRIBUTIONS=debian.stretch ANSIBLE_VERSION=2.6.5 PART=3/7
+    - DISTRIBUTIONS=debian.stretch ANSIBLE_VERSION=2.6.5 PART=4/7
+    - DISTRIBUTIONS=debian.stretch ANSIBLE_VERSION=2.6.5 PART=5/7
+    - DISTRIBUTIONS=debian.stretch ANSIBLE_VERSION=2.6.5 PART=6/7
+    - DISTRIBUTIONS=debian.stretch ANSIBLE_VERSION=2.6.5 PART=7/7
+    - DISTRIBUTIONS=centos.7       ANSIBLE_VERSION=2.6.5 PART=1/1
+    - DISTRIBUTIONS=ubuntu.xenial  ANSIBLE_VERSION=2.6.5 PART=1/1
+
+script: echo LINT AND DIFF
+
+
+
+branches:
+  only:
+    - master
 
 jobs:
   include:
     - stage: test
       script:
-        - echo test
-      #if: type = pull_request
-
-    - stage: gitsplit
+        - echo GITSPLIT
       env:
-      script:
-        - echo gitsplit
-      #if: branch = master AND type != pull_request
+
