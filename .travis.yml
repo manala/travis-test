@@ -29,11 +29,14 @@ env:
 
 jobs:
   include:
-    - name: Make
+    - name: test
+      script: skip
+    - stage:
+      name: Make
       script:
         - echo LINT
       # if: type = pull_request
-    - name: Gitsplit
+    - stage: Gitsplit
       script:
         - make split CONFIRM=1
       env:
