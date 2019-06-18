@@ -15,10 +15,9 @@ jobs:
     - stage: test
       script:
         - echo test
-      #if: type = pull_request
-
+      if: type = pull_request
     - stage: gitsplit
       env:
       script:
         - echo gitsplit
-      #if: branch = master AND type != pull_request
+      if: branch = master AND type != pull_request
