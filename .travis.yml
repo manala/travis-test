@@ -29,7 +29,7 @@ env:
 
 jobs:
   include:
-    - stage: Test
+    - stage: Test1
       script:
         - make lint.diff
         - make test.diff
