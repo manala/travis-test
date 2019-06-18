@@ -4,13 +4,13 @@ services:
   - docker
 
 env:
-  global:
-    - VERBOSE=1
-  matrix:
-    - DISTRIBUTIONS=debian.wheezy  ANSIBLE_VERSION=2.6.5
-    - DISTRIBUTIONS=debian.jessie  ANSIBLE_VERSION=2.6.5
-    - DISTRIBUTIONS=debian.stretch ANSIBLE_VERSION=2.6.5
-    - DISTRIBUTIONS=ubuntu.xenial  ANSIBLE_VERSION=2.6.5
+  # global:
+  #   - VERBOSE=1
+  # matrix:
+  - DISTRIBUTIONS=debian.wheezy  ANSIBLE_VERSION=2.6.5
+  - DISTRIBUTIONS=debian.jessie  ANSIBLE_VERSION=2.6.5
+  - DISTRIBUTIONS=debian.stretch ANSIBLE_VERSION=2.6.5
+  - DISTRIBUTIONS=ubuntu.xenial  ANSIBLE_VERSION=2.6.5
 
 jobs:
   include:
