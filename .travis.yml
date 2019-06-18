@@ -17,6 +17,7 @@ env:
     - echo test
     # if: branch != master
   # - stage: gitsplit
+- stage: gitsplit
   script:
     - echo gitsplit
     #env:
