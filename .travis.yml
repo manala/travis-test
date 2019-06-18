@@ -7,19 +7,18 @@ services:
 #   - DISTRIBUTIONS=debian.stretch ANSIBLE_VERSION=2.6.5
 #   - DISTRIBUTIONS=debian.jessie  ANSIBLE_VERSION=2.6.5
 
-_prout: &prout
-  - echo test 1
-  - echo test 2
-
 jobs:
   include:
-    - stage: test
+    - &test
+      stage: test
       env: DISTRIBUTIONS=debian.stretch ANSIBLE_VERSION=2.6.5
-      script: <<: *prout
-    - env: DISTRIBUTIONS=debian.jessie  ANSIBLE_VERSION=2.6.5
-      script: <<: *prout
-    - env: DISTRIBUTIONS=debian.wheezy  ANSIBLE_VERSION=2.6.5
-      script: <<: *prout
+      script:
+        - echo test 1
+        - echo test 2
+    - <<: *test
+      env: DISTRIBUTIONS=debian.jessie  ANSIBLE_VERSION=2.6.5
+    - <<: *test
+      env: DISTRIBUTIONS=debian.wheezy  ANSIBLE_VERSION=2.6.5
     - stage: deploy
       script: echo deploy
 
