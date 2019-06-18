@@ -6,23 +6,20 @@ services:
 env:
   # global:
   #   - VERBOSE=1
-  # matrix:
-  - toto:
-      - DISTRIBUTIONS=debian.jessie  ANSIBLE_VERSION=2.6.5
-      - DISTRIBUTIONS=debian.wheezy  ANSIBLE_VERSION=2.6.5
-      - DISTRIBUTIONS=debian.stretch ANSIBLE_VERSION=2.6.5
-      - DISTRIBUTIONS=ubuntu.xenial  ANSIBLE_VERSION=2.6.5
+# matrix:
+  - DISTRIBUTIONS=debian.jessie  ANSIBLE_VERSION=2.6.5
+  - DISTRIBUTIONS=debian.wheezy  ANSIBLE_VERSION=2.6.5
+  - DISTRIBUTIONS=debian.stretch ANSIBLE_VERSION=2.6.5
+  - DISTRIBUTIONS=ubuntu.xenial  ANSIBLE_VERSION=2.6.5
 
-jobs:
-  include:
-    - stage: test
-      script:
-        - echo test
-      # if: branch != master
-    - stage: gitsplit
-      script:
-        - echo gitsplit
-      #env:
+- stage: test
+  script:
+    - echo test
+  # if: branch != master
+- stage: gitsplit
+  script:
+    - echo gitsplit
+  #env:
       # if: branch = master AND commit_message = Release
 
 # stages:
