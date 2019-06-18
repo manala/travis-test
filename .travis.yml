@@ -14,7 +14,7 @@ script:
 
 jobs:
   include:
-    - stage: test
+    - stage: test2
       script:
         - echo test
       if: type = pull_request
