@@ -31,15 +31,25 @@ env:
     - DISTRIBUTIONS=centos.7       ANSIBLE_VERSION=2.6.5 PART=1/1
     - DISTRIBUTIONS=ubuntu.xenial  ANSIBLE_VERSION=2.6.5 PART=1/1
 
-script:
-  - echo lint.diff
-  - echo test.diff
-if: type = pull_request OR commit_message = Release
 
-jobs:
+stages:
+  - name: test
+  - name: make
+    script:
+    - echo lint.diff
+    - echo test.diff
+    if: type = pull_request OR commit_message = Release
+  - stage: Gitsplit
+    script:
+      - echo gitsplit
+    env:
+    if: commit_message = Release
+
+
+matrix:
   include:
-    - stage: Gitsplit
-      script:
-        - echo gitsplit
+    - stage: test
       env:
-      if: commit_message = Release
+    - stage: make
+    - stage: gitsplit
+      env:
