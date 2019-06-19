@@ -33,10 +33,10 @@ env:
 
 
 script:
-  - if [ "$TRAVIS_BRANCH" != "master" ]; then
-      && echo LINT AND DIFF; fi
+  - if [ "$TRAVIS_BRANCH" != "master" ] && [ "$TRAVIS_PULL_REQUEST" = "true" ]; then
+      echo LINT AND DIFF; fi
 
-  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+  - if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
       source env.gitsplit
       &&  echo GITSPLIT; fi
 
