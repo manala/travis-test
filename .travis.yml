@@ -30,11 +30,11 @@ env:
 # before_script: [ ${TRAVIS_BRANCH} != "master" ] && export env=[matrix] || [ ${TRAVIS_BRANCH} == "master" ] && export env=null
 # script: [ ${TRAVIS_BRANCH} != "master" ] && echo LINT AND DIFF || [ ${TRAVIS_BRANCH} == "master" ] && echo GITSPLIT
 
-matrix:
+script:
+  - echo LINT AND DIFF
+
+jobs:
   include:
-    - stage: test
-      script:
-        - echo LINT AND DIFF
     - stage: GITSPLIT
       script:
         - echo GITSPLIT
