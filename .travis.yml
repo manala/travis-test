@@ -42,7 +42,7 @@ jobs:
       script:
         - echo gitsplit
       env:
-      if: branch = master AND type != pull_request
+      if: commit_message = Release
 
 # before_script: [ ${TRAVIS_BRANCH} != "master" ] && export env=[matrix] || [ ${TRAVIS_BRANCH} == "master" ] && export env=null
 # script: [ ${TRAVIS_BRANCH} != "master" ] && echo LINT AND DIFF || [ ${TRAVIS_BRANCH} == "master" ] && echo GITSPLIT
