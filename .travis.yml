@@ -33,7 +33,8 @@ env:
 matrix:
   include:
     - stage: test
-    - script: echo LINT AND DIFF
+      script:
+        - echo LINT AND DIFF
     - stage: GITSPLIT
       script:
         - echo GITSPLIT
