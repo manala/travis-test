@@ -26,6 +26,7 @@ env:
     - DISTRIBUTIONS=debian.stretch ANSIBLE_VERSION=2.6.5 PART=7/7
     - DISTRIBUTIONS=centos.7       ANSIBLE_VERSION=2.6.5 PART=1/1
     - DISTRIBUTIONS=ubuntu.xenial  ANSIBLE_VERSION=2.6.5 PART=1/1
+  gitsplit:
 
 # before_script: [ ${TRAVIS_BRANCH} != "master" ] && export env=[matrix] || [ ${TRAVIS_BRANCH} == "master" ] && export env=null
 # script: [ ${TRAVIS_BRANCH} != "master" ] && echo LINT AND DIFF || [ ${TRAVIS_BRANCH} == "master" ] && echo GITSPLIT
@@ -33,9 +34,11 @@ env:
 
 script:
   - if [ "$TRAVIS_BRANCH" != "master" ]; then
-      set DISTRIBUTIONS=debian.stretch  ANSIBLE_VERSION=2.6.5
       && echo LINT AND DIFF; fi
-  - if [ "$TRAVIS_BRANCH" == "master" ]; then echo GITSPLIT; fi
+
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+      source env.gitsplit
+      &&  echo GITSPLIT; fi
 
 # script:
 #   - echo LINT AND DIFF
