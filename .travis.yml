@@ -3,6 +3,10 @@ language: generic
 services:
   - docker
 
+branches:
+  only:
+    - master
+
 env:
   global:
     - VERBOSE=1
@@ -34,7 +38,7 @@ env:
 
 script:
   - if [ "$TRAVIS_BRANCH" != "master" ] && [ "$TRAVIS_PULL_REQUEST" = "true" ]; then
-      echo LINT AND DIFF; fi
+      && echo LINT AND DIFF; fi
 
   - if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
       source env.gitsplit
