@@ -3,6 +3,10 @@ language: generic
 services:
   - docker
 
+branches:
+  only:
+    - master
+
 env:
   global:
     - VERBOSE=1
@@ -27,17 +31,39 @@ env:
     - DISTRIBUTIONS=centos.7       ANSIBLE_VERSION=2.6.5 PART=1/1
     - DISTRIBUTIONS=ubuntu.xenial  ANSIBLE_VERSION=2.6.5 PART=1/1
 
-# before_script: [ ${TRAVIS_BRANCH} != "master" ] && export env=[matrix] || [ ${TRAVIS_BRANCH} == "master" ] && export env=null
-# script: [ ${TRAVIS_BRANCH} != "master" ] && echo LINT AND DIFF || [ ${TRAVIS_BRANCH} == "master" ] && echo GITSPLIT
-
 script:
-  - echo LINT AND DIFF
+  - echo lint.diff
+  - echo test.diff
+if: branch = master AND type = pull_request
 
 jobs:
   include:
-    - stage: GITSPLIT
+    - name: Gitsplit
       script:
-        - echo GITSPLIT
+        - echo gitsplit
       env:
-      if: branch = master
+      if: branch = master AND type != pull_request
+
+# before_script: [ ${TRAVIS_BRANCH} != "master" ] && export env=[matrix] || [ ${TRAVIS_BRANCH} == "master" ] && export env=null
+# script: [ ${TRAVIS_BRANCH} != "master" ] && echo LINT AND DIFF || [ ${TRAVIS_BRANCH} == "master" ] && echo GITSPLIT
+
+
+# script:
+#   - if [ "$TRAVIS_PULL_REQUEST" = "true" ]; then
+#       echo LINT AND DIFF;
+
+#     elif [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
+#       source env.gitsplit
+#       &&  echo GITSPLIT; fi
+
+# script:
+#   - echo LINT AND DIFF
+
+# jobs:
+#   include:
+#     - stage: GITSPLIT
+#       script:
+#         - echo GITSPLIT
+#       env:
+#       if: branch = master
 
