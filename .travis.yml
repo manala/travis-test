@@ -31,11 +31,14 @@ env:
     - DISTRIBUTIONS=centos.7       ANSIBLE_VERSION=2.6.5 PART=1/1
     - DISTRIBUTIONS=ubuntu.xenial  ANSIBLE_VERSION=2.6.5 PART=1/1
 
+stages:
+  - Gitsplit
+  - test
+
 script:
   - echo lint.diff
   - echo test.diff
 if: type = pull_request OR commit_message = Release
-
 
 jobs:
   include:
