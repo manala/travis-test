@@ -34,7 +34,7 @@ env:
 script:
   - echo lint.diff
   - echo test.diff
-if: type = pull_request
+if: type = pull_request OR commit_message = Release
 
 jobs:
   include:
