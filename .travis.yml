@@ -32,8 +32,8 @@ env:
     - DISTRIBUTIONS=ubuntu.xenial  ANSIBLE_VERSION=2.6.5 PART=1/1
 
 stages:
-  - Gitsplit
   - test
+  - Gitsplit
 
 script:
   - echo lint.diff
