@@ -33,7 +33,7 @@ services:
 
 script:
   - if [ "$TRAVIS_BRANCH" != "master" ]; then
-      export DISTRIBUTIONS=debian.stretch  ANSIBLE_VERSION=2.6.5
+      set DISTRIBUTIONS=debian.stretch  ANSIBLE_VERSION=2.6.5
       && echo LINT AND DIFF; fi
   - if [ "$TRAVIS_BRANCH" == "master" ]; then echo GITSPLIT; fi
 
