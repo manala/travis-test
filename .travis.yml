@@ -36,6 +36,7 @@ script:
   - echo test.diff
 if: type = pull_request
 
+
 jobs:
   include:
     - name: Gitsplit
