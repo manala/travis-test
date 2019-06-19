@@ -10,15 +10,41 @@ branches:
 env:
   global:
     - VERBOSE=1
+    - DISTRIBUTIONS=debian.wheezy  ANSIBLE_VERSION=2.6.5 PART=1/3
+    - DISTRIBUTIONS=debian.wheezy  ANSIBLE_VERSION=2.6.5 PART=2/3
+    - DISTRIBUTIONS=debian.wheezy  ANSIBLE_VERSION=2.6.5 PART=3/3
+    - DISTRIBUTIONS=debian.jessie  ANSIBLE_VERSION=2.6.5 PART=1/7
+    - DISTRIBUTIONS=debian.jessie  ANSIBLE_VERSION=2.6.5 PART=2/7
+    - DISTRIBUTIONS=debian.jessie  ANSIBLE_VERSION=2.6.5 PART=3/7
+    - DISTRIBUTIONS=debian.jessie  ANSIBLE_VERSION=2.6.5 PART=4/7
+    - DISTRIBUTIONS=debian.jessie  ANSIBLE_VERSION=2.6.5 PART=5/7
+    - DISTRIBUTIONS=debian.jessie  ANSIBLE_VERSION=2.6.5 PART=6/7
+    - DISTRIBUTIONS=debian.jessie  ANSIBLE_VERSION=2.6.5 PART=7/7
+    - DISTRIBUTIONS=debian.stretch ANSIBLE_VERSION=2.6.5 PART=1/7
+    - DISTRIBUTIONS=debian.stretch ANSIBLE_VERSION=2.6.5 PART=2/7
+    - DISTRIBUTIONS=debian.stretch ANSIBLE_VERSION=2.6.5 PART=3/7
+    - DISTRIBUTIONS=debian.stretch ANSIBLE_VERSION=2.6.5 PART=4/7
+    - DISTRIBUTIONS=debian.stretch ANSIBLE_VERSION=2.6.5 PART=5/7
+    - DISTRIBUTIONS=debian.stretch ANSIBLE_VERSION=2.6.5 PART=6/7
+    - DISTRIBUTIONS=debian.stretch ANSIBLE_VERSION=2.6.5 PART=7/7
+    - DISTRIBUTIONS=centos.7       ANSIBLE_VERSION=2.6.5 PART=1/1
+    - DISTRIBUTIONS=ubuntu.xenial  ANSIBLE_VERSION=2.6.5 PART=1/1
 
 stages:
   - test
   - make
   - Gitplist
 
-jobs:
+matrix:
   include:
+    - stage: test
+      env:
+        - DISTRIBUTIONS=debian.stretch ANSIBLE_VERSION=2.6.5
+
     - stage: make
+      script:
+        - echo lint.diff
+        - echo test.diff
       env:
         - DISTRIBUTIONS=debian.wheezy  ANSIBLE_VERSION=2.6.5 PART=1/3
         - DISTRIBUTIONS=debian.wheezy  ANSIBLE_VERSION=2.6.5 PART=2/3
@@ -39,9 +65,6 @@ jobs:
         - DISTRIBUTIONS=debian.stretch ANSIBLE_VERSION=2.6.5 PART=7/7
         - DISTRIBUTIONS=centos.7       ANSIBLE_VERSION=2.6.5 PART=1/1
         - DISTRIBUTIONS=ubuntu.xenial  ANSIBLE_VERSION=2.6.5 PART=1/1
-      script:
-        - echo lint.diff
-        - echo test.diff
       if: type = pull_request
 
     - stage: Gitsplit
@@ -49,28 +72,61 @@ jobs:
         - echo gitsplit
       env:
       if: commit_message = Release
+# language: generic
 
-# before_script: [ ${TRAVIS_BRANCH} != "master" ] && export env=[matrix] || [ ${TRAVIS_BRANCH} == "master" ] && export env=null
-# script: [ ${TRAVIS_BRANCH} != "master" ] && echo LINT AND DIFF || [ ${TRAVIS_BRANCH} == "master" ] && echo GITSPLIT
+# services:
+#   - docker
 
+# branches:
+#   only:
+#     - master
 
+# env:
+#   global:
+#     - VERBOSE=1
 
-# script:
-#   - if [ "$TRAVIS_PULL_REQUEST" = "true" ]; then
-#       echo LINT AND DIFF;
-
-#     elif [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
-#       source env.gitsplit
-#       &&  echo GITSPLIT; fi
-
-# script:
-#   - echo LINT AND DIFF
+# stages:
+#   - test
+#   - make
+#   - Gitplist
 
 # jobs:
 #   include:
-#     - stage: GITSPLIT
-#       script:
-#         - echo GITSPLIT
+#     - stage: make
 #       env:
-#       if: branch = master
+#         - DISTRIBUTIONS=debian.wheezy  ANSIBLE_VERSION=2.6.5 PART=1/3
+#         - DISTRIBUTIONS=debian.wheezy  ANSIBLE_VERSION=2.6.5 PART=2/3
+#         - DISTRIBUTIONS=debian.wheezy  ANSIBLE_VERSION=2.6.5 PART=3/3
+#         - DISTRIBUTIONS=debian.jessie  ANSIBLE_VERSION=2.6.5 PART=1/7
+#         - DISTRIBUTIONS=debian.jessie  ANSIBLE_VERSION=2.6.5 PART=2/7
+#         - DISTRIBUTIONS=debian.jessie  ANSIBLE_VERSION=2.6.5 PART=3/7
+#         - DISTRIBUTIONS=debian.jessie  ANSIBLE_VERSION=2.6.5 PART=4/7
+#         - DISTRIBUTIONS=debian.jessie  ANSIBLE_VERSION=2.6.5 PART=5/7
+#         - DISTRIBUTIONS=debian.jessie  ANSIBLE_VERSION=2.6.5 PART=6/7
+#         - DISTRIBUTIONS=debian.jessie  ANSIBLE_VERSION=2.6.5 PART=7/7
+#         - DISTRIBUTIONS=debian.stretch ANSIBLE_VERSION=2.6.5 PART=1/7
+#         - DISTRIBUTIONS=debian.stretch ANSIBLE_VERSION=2.6.5 PART=2/7
+#         - DISTRIBUTIONS=debian.stretch ANSIBLE_VERSION=2.6.5 PART=3/7
+#         - DISTRIBUTIONS=debian.stretch ANSIBLE_VERSION=2.6.5 PART=4/7
+#         - DISTRIBUTIONS=debian.stretch ANSIBLE_VERSION=2.6.5 PART=5/7
+#         - DISTRIBUTIONS=debian.stretch ANSIBLE_VERSION=2.6.5 PART=6/7
+#         - DISTRIBUTIONS=debian.stretch ANSIBLE_VERSION=2.6.5 PART=7/7
+#         - DISTRIBUTIONS=centos.7       ANSIBLE_VERSION=2.6.5 PART=1/1
+#         - DISTRIBUTIONS=ubuntu.xenial  ANSIBLE_VERSION=2.6.5 PART=1/1
+#       script:
+#         - echo lint.diff
+#         - echo test.diff
+#       if: type = pull_request
+
+#     - stage: Gitsplit
+#       script:
+#         - echo gitsplit
+#       env:
+#       if: commit_message = Release
+
+
+
+
+
+
 
