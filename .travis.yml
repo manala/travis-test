@@ -34,7 +34,7 @@ env:
 script:
   - echo lint.diff
   - echo test.diff
-if: branch = master AND type = pull_request
+if: type = pull_request
 
 jobs:
   include:
