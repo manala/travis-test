@@ -31,6 +31,10 @@ env:
     - DISTRIBUTIONS=centos.7       ANSIBLE_VERSION=2.6.5 PART=1/1
     - DISTRIBUTIONS=ubuntu.xenial  ANSIBLE_VERSION=2.6.5 PART=1/1
 
+stages:
+  - Gitplist
+  - test
+
 script:
   - echo lint.diff
   - echo test.diff
