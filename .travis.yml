@@ -42,7 +42,7 @@ if: type = pull_request OR commit_message = Release
 
 jobs:
   include:
-    - name: Gitsplit
+    - stage: Gitsplit
       script:
         - echo gitsplit
       env:
