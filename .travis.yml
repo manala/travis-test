@@ -33,13 +33,13 @@ env:
 
 
 stages:
-  - name: test
-  - name: make
+  - stage: test
+    name: Make
     script:
     - echo lint.diff
     - echo test.diff
     if: type = pull_request OR commit_message = Release
-  - stage: Gitsplit
+  - name: Gitsplit
     script:
       - echo gitsplit
     env:
