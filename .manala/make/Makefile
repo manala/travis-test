@@ -88,9 +88,8 @@ SPLIT_HELP = \
 	$(call help,split,Split ansible roles)
 
 split:
-	$(call confirm,Please confirm split of *ALL* ansible roles)
+	$(if $(FORCE),,$(call confirm,Please confirm split of *ALL* ansible roles))
 	$(call gitsplit)
-	$(if $(FORCE))$(call gitsplit)
 
 ########
 # Sync #
