@@ -17,7 +17,7 @@ define gitsplit
 	docker run \
 		--rm \
 		--env GITSPLIT_GITHUB_API_TOKEN \
-		--tty --interactive \
+		--tty --nointeractive \
 		--volume $(MANALA_CURRENT_DIR):/srv \
 		jderusse/gitsplit
 endef
