@@ -4,6 +4,7 @@
 
 ifeq ($(shell uname -s),Darwin)
 define gitsplit
+	env && \
 	docker run \
 		--rm \
 		--tty --interactive \
@@ -13,7 +14,7 @@ define gitsplit
 endef
 else
 define gitsplit
-	env \
+	env && \
 	docker run \
 		--rm \
 		--env GITSPLIT_GITHUB_API_TOKEN \
