@@ -34,12 +34,12 @@ env:
 
 script: echo prout
 
- jobs:
-   include:
-     - stage: lint
-       script: echo lint-1
-     - stage: lint
-       script: echo lint-2
-     - stage: gitsplit
-       script: echo gitsplit
+jobs:
+ include:
+   - stage: lint
+     script: echo lint-1
+   - stage: lint
+     script: echo lint-2
+   - stage: gitsplit
+     script: echo gitsplit
 
