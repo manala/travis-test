@@ -12,7 +12,7 @@ define gitsplit
 		jderusse/gitsplit
 endef
 else
-ifeq (${TRAVIS_BRANCH} = master)
+ifeq ($TRAVIS_BRANCH = master)
 define gitsplit
 	docker run \
 		--rm \
