@@ -21,7 +21,6 @@ define gitsplit
 		--volume $(MANALA_CURRENT_DIR):/srv \
 		jderusse/gitsplit
 endef
-endif
 define gitsplit
 	docker run \
 		--rm \
