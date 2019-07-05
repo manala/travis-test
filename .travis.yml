@@ -129,6 +129,6 @@ jobs:
         - DISTRIBUTIONS=ubuntu.xenial  ANSIBLE_VERSION=2.6.5 PART=1/1
       if: type = pull_request
     - stage: gitsplit
-      script: make split
+      script: make split FORCE=1
       if: branch = master AND type = push
 

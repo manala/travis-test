@@ -90,6 +90,7 @@ SPLIT_HELP = \
 split:
 	$(call confirm,Please confirm split of *ALL* ansible roles)
 	$(call gitsplit)
+	$(if $(FORCE))$(call gitsplit)
 
 ########
 # Sync #

@@ -12,16 +12,8 @@ define gitsplit
 		jderusse/gitsplit
 endef
 else
-if ($TRAVIS_BRANCH = master)
 define gitsplit
-	docker run \
-		--rm \
-		--env GITSPLIT_GITHUB_API_TOKEN \
-		--tty --nointeractive \
-		--volume $(MANALA_CURRENT_DIR):/srv \
-		jderusse/gitsplit
-endef
-define gitsplit
+	env \
 	docker run \
 		--rm \
 		--env GITSPLIT_GITHUB_API_TOKEN \
