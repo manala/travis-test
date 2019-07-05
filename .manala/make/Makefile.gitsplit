@@ -4,7 +4,6 @@
 
 ifeq ($(shell uname -s),Darwin)
 define gitsplit
-	env && \
 	docker run \
 		--rm \
 		--tty --interactive \
@@ -13,8 +12,17 @@ define gitsplit
 		jderusse/gitsplit
 endef
 else
+ifeq (${TRAVIS_BRANCH} = master)
 define gitsplit
-	env && \
+	docker run \
+		--rm \
+		--env GITSPLIT_GITHUB_API_TOKEN \
+		--tty --interactive \
+		--volume $(MANALA_CURRENT_DIR):/srv \
+		jderusse/gitsplit
+endef
+else
+define gitsplit
 	docker run \
 		--rm \
 		--env GITSPLIT_GITHUB_API_TOKEN \
