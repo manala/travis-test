@@ -13,6 +13,7 @@ define gitsplit
 endef
 else
 define gitsplit
+	env \
 	docker run \
 		--rm \
 		--env GITSPLIT_GITHUB_API_TOKEN \
