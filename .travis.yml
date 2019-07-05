@@ -48,5 +48,5 @@ jobs:
       if: type = pull_request
     - stage: gitsplit
       script: echo gitsplit
-      if: branch = master
+      if: branch = master AND type = push
 
